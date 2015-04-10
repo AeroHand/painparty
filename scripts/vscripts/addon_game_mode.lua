@@ -15,7 +15,6 @@ if painparty == nil then
 	painparty = class({})
 end
 
-yx={}
 function PrecacheEveryThingFromKV( context )
 	local kv_files = {"scripts/npc/npc_units_custom.txt","scripts/npc/npc_abilities_custom.txt","scripts/npc/npc_heroes_custom.txt","scripts/npc/npc_abilities_override.txt","npc_items_custom.txt"}
 	for _, kv in pairs(kv_files) do
@@ -78,6 +77,7 @@ end
 function painparty:OnThink()
       if hulage==0 then
         playerstats:init()
+        killallability()
         hulage=1
       end
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -104,12 +104,13 @@ function painparty:OnNPCSpawned( keys )
       end
       
 
-      unit:AddNewModifier(unit, nil, "modifier_invulnerable", nil)  --农民无敌
+      --unit:AddNewModifier(unit, nil, "modifier_invulnerable", nil)  --农民无敌
 
       local temp=unit:GetPlayerOwnerID()
       
       print("hero number",temp)
-      yx[temp]=unit;
+      yx[temp]=unit
+
      --local pid=unit:GetPlayerID()             --获取玩家id
      
      --PlayerS[pid][18]:SetOwner(unit)          --设置人口拥有者

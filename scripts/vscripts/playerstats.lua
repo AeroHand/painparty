@@ -1,5 +1,6 @@
-
-yx={}
+if yx==nil then
+  yx={}
+end
 
 lwang={0,0,0}
 dwang={0,0,0}
@@ -19,6 +20,7 @@ function playerstats:init()
    for i=0,9 do
      PlayerS[i]={}
      PlayerS[i][1]={} --储存玩家建造的兵
+
    end
 
    bazi={}

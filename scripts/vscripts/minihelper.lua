@@ -1,10 +1,12 @@
 function killallability()
 	for i=0,9 do
-		for j=0,15 do
-            local temp1=yx[i]:GetAbilityByIndex(j) --获取技能实体
-        	if temp1 then
-        	    temp1:RemoveSelf()
-            end
+		if yx[i] then
+		  for j=0,15 do
+              local temp1=yx[i]:GetAbilityByIndex(j) --获取技能实体
+        	  if temp1 then
+        	      temp1:RemoveSelf()
+              end
+          end
         end
     end
 end        
@@ -13,7 +15,7 @@ function giveability(miniabilitytable)
    if miniabilitytable then
 	  for i=0,9 do
 	    	for j=1,#miniabilitytable do
-                yx[i]:AddAbility(miniabilitytable)
+                yx[i]:AddAbility(miniabilitytable[j])
             end    
       end    
    end   
@@ -25,7 +27,8 @@ function teleport(n)
 	local ttt=tt:GetAbsOrigin()
     for i=0,9 do
     	if yx[i] then
-    	  yx[i]:SetAbsOrigin(ttt+RandomVector(150))
+           print("start teleport hero",i)
+    	   yx[i]:SetAbsOrigin(ttt+RandomVector(150))
         end
     end 	 
 end	
